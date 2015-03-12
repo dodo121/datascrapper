@@ -34,6 +34,9 @@ gem "therubyracer"
 gem "less-rails"
 gem "twitter-bootstrap-rails"
 
+gem 'decent_exposure'
+gem 'decent_generators'
+
 group :development, :test do
   gem 'factory_girl_rails'
   gem 'faker'
