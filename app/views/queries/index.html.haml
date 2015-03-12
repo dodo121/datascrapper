@@ -1,0 +1,19 @@
+%h1 Listing queries
+
+%table
+  %tr
+    %th Name
+    %th
+    %th
+    %th
+
+  - queries.each do |query|
+    %tr
+      %td= query.name
+      %td= link_to 'Show', query
+      %td= link_to 'Edit', edit_query_path(query)
+      %td= link_to 'Destroy', query, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Query', new_query_path
