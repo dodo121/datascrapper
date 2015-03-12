@@ -29,6 +29,11 @@ group :development do
   gem 'rb-inotify', :require=>false
   gem 'spring-commands-rspec'
 end
+
+gem "therubyracer"
+gem "less-rails"
+gem "twitter-bootstrap-rails"
+
 group :development, :test do
   gem 'factory_girl_rails'
   gem 'faker'
