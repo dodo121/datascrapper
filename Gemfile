@@ -37,6 +37,9 @@ gem "twitter-bootstrap-rails"
 gem 'decent_exposure'
 gem 'decent_generators'
 
+gem 'mechanize'
+gem 'nokogiri'
+
 group :development, :test do
   gem 'factory_girl_rails'
   gem 'faker'
