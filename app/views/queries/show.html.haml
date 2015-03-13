@@ -7,3 +7,11 @@
 = link_to 'Edit', edit_query_path(query)
 \|
 = link_to 'Back', queries_path
+
+%h3 Links:
+%table
+  - query.links.each do |link|
+    %tr
+      %td= link_to 'Visit', link.url
+      %td &nbsp
+      %td= link.name
