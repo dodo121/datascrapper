@@ -4,14 +4,14 @@ class GoogleSearch
 
   recurrence { hourly.minute_of_hour(0,15,30,45) }
 
-  def perform(query_term)
+  def perform(query_term, user_id)
     agent = Mechanize.new
     page = agent.get('http://google.com/')
     search_form = page.form('f')
     search_form.q = query_term
     page = agent.submit(search_form)
 
-    query = Query.where(name: query_term.downcase).first_or_create!
+    query = Query.where(name: query_term.downcase).first_or_create(user_id: user_id)
 
     page.search('.g').each do |p|
       a_html_tag = p.at('a').to_s

@@ -1,19 +1,19 @@
-%h1 Listing queries
+%h1 My queries
 
-%table
-  %tr
-    %th Name
-    %th
-    %th
-    %th
-
-  - queries.each do |query|
+- if current_user.queries.to_a.present?
+  %table
     %tr
-      %td= query.name
-      %td= link_to 'Show', query
-      %td= link_to 'Edit', edit_query_path(query)
-      %td= link_to 'Destroy', query, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %th Name
+      %th
+      %th
+      %th
 
-%br
-
-= link_to 'New Query', new_query_path
+    - current_user.queries.to_a.each do |query|
+      %tr
+        %td= query.name
+        %td= link_to 'Show', query
+        %td= link_to 'Edit', edit_query_path(query)
+        %td= link_to 'Destroy', query, :method => :delete, :data => { :confirm => 'Are you sure?' }
+- else
+  %br
+  = link_to 'Add new Query', new_query_path
