@@ -4,6 +4,7 @@
   %tr
     %th Name
     %th Url
+    %th Short desc
     %th
     %th
     %th
@@ -12,6 +13,7 @@
     %tr
       %td= link.name
       %td= link.url
+      %td= link.short_description
       %td= link_to 'Show', link
       %td= link_to 'Edit', edit_link_path(link)
       %td= link_to 'Destroy', link, :method => :delete, :data => { :confirm => 'Are you sure?' }

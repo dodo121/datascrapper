@@ -9,11 +9,15 @@ task import: :environment do
 
   query = Query.create!(name: 'first')
 
-  page.search('.g a').each do |p|
-   clean_name = ActionController::Base.helpers.strip_tags(p.to_s)
-   next if clean_name == 'Podobne' || clean_name == 'Kopia' ||  clean_name.empty? || clean_name.include?("Obrazy")
-   clean_url = p.attributes['href'].to_s.split(%r{=|&})
-   Link.create(name: clean_name, url: clean_url[1], query_id: query.id)
+  page.search('.g').each do |p|
+    a_html_tag = p.at('a').to_s
+    next if a_html_tag.include? 'images'
+    clean_name = strip(a_html_tag)
+    clean_url = a_html_tag.split(%r{=|&})
+    Link.create(name: clean_name, url: clean_url[2], short_description: strip(p.css('.st').to_s), query_id: query.id)
   end
+end
 
+def strip(string)
+  ActionController::Base.helpers.strip_tags(string)
 end
