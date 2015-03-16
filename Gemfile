@@ -41,6 +41,7 @@ gem 'mechanize'
 gem 'nokogiri'
 
 gem 'sidekiq'
+gem 'sidetiq'
 
 group :development, :test do
   gem 'factory_girl_rails'
