@@ -1,10 +1,9 @@
 desc 'Google search import'
 task import: :environment do
   agent = Mechanize.new
-  agent.user_agent_alias = 'Mac Firefox'
   page = agent.get('http://google.com/')
   search_form = page.form('f')
-  search_form.q = 'car'
+  search_form.q = 'ruby'
   page = agent.submit(search_form)
 
   query = Query.create!(name: 'first')
