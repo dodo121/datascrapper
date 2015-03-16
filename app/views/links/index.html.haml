@@ -8,9 +8,11 @@
     %th
     %th
     %th
+    %th
 
   - links.each do |link|
     %tr
+      %td= link.updated_at
       %td= link.name
       %td= link.url
       %td= link.short_description

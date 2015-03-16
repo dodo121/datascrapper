@@ -15,11 +15,8 @@ class QueriesController < ApplicationController
   end
 
   def create
-    if query.save
-      redirect_to query, notice: 'Query was successfully created.'
-    else
-      render action: 'new'
-    end
+    GoogleSearch.new.perform(params[:query][:name])
+    redirect_to links_path, notice: 'Query was successfully created.'
   end
 
   def update
