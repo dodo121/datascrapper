@@ -1,0 +1,10 @@
+%nav.navbar.navbar-default
+  .container-fluid
+    .navbar-header
+      %button.navbar-toggle.collapsed{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+      = link_to 'Data Scrapper', root_path, class: 'navbar-brand'
+    #bs-example-navbar-collapse-1.collapse.navbar-collapse
+      - if user_signed_in?
+        = render 'layouts/signed_in_links'
+      - else
+        = render 'layouts/non_signed_in_links'

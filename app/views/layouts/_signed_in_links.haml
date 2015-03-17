@@ -1,0 +1,6 @@
+%ul.nav.navbar-nav
+  %li= link_to 'Add new query', new_query_path
+  %li= link_to 'My queries', queries_path
+%ul.nav.navbar-nav.navbar-right
+  %li= link_to 'Edit account', edit_user_registration_path
+  %li= link_to 'Sign out', destroy_user_session_path, :method=>'delete'

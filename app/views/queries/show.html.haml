@@ -1,17 +1,6 @@
-%p#notice= notice
+= link_to '&#8678; Back'.html_safe, queries_path, class: 'btn btn-info'
 
-%p
-  %b Name:
-  = query.name
+%h1 Query Name: #{query.name}
 
-= link_to 'Edit', edit_query_path(query)
-\|
-= link_to 'Back', queries_path
-
-%h3 Links:
-%table
-  - query.links.each do |link|
-    %tr
-      %td= link_to 'Visit', link.url
-      %td &nbsp
-      %td= link.name
+%table.table.table-stripped
+  = render 'links/index', collection: query.links

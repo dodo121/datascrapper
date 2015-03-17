@@ -3,6 +3,6 @@ Rails.application.routes.draw do
 
   resources :queries
 
-  root to: 'visitors#index'
+  root to: 'queries#index'
   devise_for :users
 end

@@ -1,0 +1,15 @@
+%h2 Listing links
+
+%table.table.table
+  %tr
+    %th Name
+    %th Short desc
+    %th Last update
+    %th Visit
+
+  - collection.each do |link|
+    %tr
+      %td= link.name
+      %td= link.short_description
+      %td= link.updated_at.strftime("%H:%M %Y-%m-%d")
+      %td= link_to "#{link.url}", link.url

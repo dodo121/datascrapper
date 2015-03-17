@@ -1,4 +1,6 @@
 class QueriesController < ApplicationController
+  before_action :authenticate_user!
+
   expose(:queries)
   expose(:query, attributes: :query_params)
 
