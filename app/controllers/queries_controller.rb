@@ -18,7 +18,7 @@ class QueriesController < ApplicationController
 
   def create
     GoogleSearch.new.perform(params[:query][:name], current_user.id)
-    redirect_to links_path, notice: 'Query was successfully created.'
+    redirect_to root_path, notice: 'Query was successfully created.'
   end
 
   def update

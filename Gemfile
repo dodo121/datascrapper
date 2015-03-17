@@ -41,6 +41,8 @@ gem 'mechanize'
 gem 'nokogiri'
 
 gem 'sidekiq'
+gem 'sinatra', require: false
+gem 'slim'
 
 group :development, :test do
   gem 'factory_girl_rails'

@@ -17,6 +17,7 @@ class GoogleSearch
       clean_url = a_html_tag.split(%r{=|&})
       Link.where("url = ?", clean_url[2]).first_or_create(name: clean_name, url: clean_url[2],short_description: strip(p.css('.st').to_s), query_id: query.id)
     end
+    GoogleSearch.perform_in(15.minutes, query_term, user_id)
   end
 
   def strip(string)

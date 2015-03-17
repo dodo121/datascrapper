@@ -1,3 +1,5 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   resources :links
 
@@ -5,4 +7,5 @@ Rails.application.routes.draw do
 
   root to: 'queries#index'
   devise_for :users
+  mount Sidekiq::Web, at: '/sidekiq'
 end
