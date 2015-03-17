@@ -1,19 +1,23 @@
-%h1 My queries
+- if user_signed_in?
 
-- if current_user.queries.to_a.present?
-  %table.table.table-bordered
-    %tr
-      %th Name
-      %th
-      %th
-      %th
+  %h1 My queries
 
-    - current_user.queries.to_a.each do |query|
+  - if current_user.queries.to_a.present?
+    %table.table.table-bordered
       %tr
-        %td= query.name
-        %td= link_to 'Show', query
-        %td= link_to 'Edit', edit_query_path(query)
-        %td= link_to 'Destroy', query, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %th Name
+        %th
+        %th
+        %th
+
+      - current_user.queries.to_a.each do |query|
+        %tr
+          %td= query.name
+          %td= link_to 'Show', query
+          %td= link_to 'Edit', edit_query_path(query)
+          %td= link_to 'Destroy', query, :method => :delete, :data => { :confirm => 'Are you sure?' }
+  - else
+    %br
+    = link_to 'Add new Query', new_query_path
 - else
-  %br
-  = link_to 'Add new Query', new_query_path
+  Welcome!

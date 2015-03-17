@@ -1,5 +1,5 @@
 class QueriesController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: :index
 
   expose(:queries)
   expose(:query, attributes: :query_params)
