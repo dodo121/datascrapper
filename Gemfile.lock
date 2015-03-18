@@ -389,6 +389,7 @@ DEPENDENCIES
   mechanize
   nokogiri
   pg
+  pry
   rails (= 4.2.0)
   rails_layout
   rb-fchange

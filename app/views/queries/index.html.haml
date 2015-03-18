@@ -6,16 +6,14 @@
     %table.table.table-bordered
       %tr
         %th Name
-        %th
-        %th
-        %th
+        %th{colspan:3} Options
 
       - current_user.queries.to_a.each do |query|
         %tr
           %td= query.name
-          %td= link_to 'Show', query
-          %td= link_to 'Edit', edit_query_path(query)
-          %td= link_to 'Destroy', query, :method => :delete, :data => { :confirm => 'Are you sure?' }
+          %td= link_to 'Show', query, class: 'btn btn-info btn-sm'
+          %td= link_to 'Edit', edit_query_path(query), class: 'btn btn-default btn-sm'
+          %td= link_to 'Destroy', query, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn btn-danger btn-sm'
   - else
     %br
     = link_to 'Add new Query', new_query_path
