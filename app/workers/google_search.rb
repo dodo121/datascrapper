@@ -1,7 +1,7 @@
 class GoogleSearch
   include Sidekiq::Worker
 
-  def perform(query_term, user_id)
+  def perform(query_term, user_id, refresh_time)
     agent = Mechanize.new
     page = agent.get('http://google.com/')
     search_form = page.form('f')
@@ -15,9 +15,9 @@ class GoogleSearch
       next if a_html_tag.include? 'images'
       clean_name = strip(a_html_tag)
       clean_url = a_html_tag.split(%r{=|&})
-      Link.where("url = ?", clean_url[2]).first_or_create(name: clean_name, url: clean_url[2],short_description: strip(p.css('.st').to_s), query_id: query.id)
+      Link.where("url = ?", clean_url[2]).first_or_create(name: clean_name, url: clean_url[2], short_description: strip(p.css('.st').to_s), query_id: query.id)
     end
-    GoogleSearch.perform_in(15.minutes, query_term, user_id)
+    GoogleSearch.perform_in(refresh_time.to_i.minutes, query_term, user_id, refresh_time)
   end
 
   def strip(string)

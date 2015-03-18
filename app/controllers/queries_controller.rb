@@ -17,7 +17,7 @@ class QueriesController < ApplicationController
   end
 
   def create
-    GoogleSearch.new.perform(params[:query][:name], current_user.id)
+    GoogleSearch.new.perform(params[:query][:name], current_user.id, params[:query][:refresh_time])
     redirect_to root_path, notice: 'Query was successfully created.'
   end
 
