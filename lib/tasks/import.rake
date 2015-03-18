@@ -5,16 +5,16 @@ task import: :environment do
   search_form = page.form('f')
   search_form.q = 'ruby'
   page = agent.submit(search_form)
-
-  query = Query.create!(name: 'first')
-
-  page.search('.g').each do |p|
-    a_html_tag = p.at('a').to_s
-    next if a_html_tag.include? 'images'
-    clean_name = strip(a_html_tag)
-    clean_url = a_html_tag.split(%r{=|&})
-    Link.create(name: clean_name, url: clean_url[2], short_description: strip(p.css('.st').to_s), query_id: query.id)
-  end
+  puts page.uri
+#  query = Query.create!(name: 'first')
+#
+#  page.search('.g').each do |p|
+#    a_html_tag = p.at('a').to_s
+#    next if a_html_tag.include? 'images'
+#    clean_name = strip(a_html_tag)
+#    clean_url = a_html_tag.split(%r{=|&})
+#    Link.create(name: clean_name, url: clean_url[2], short_description: strip(p.css('.st').to_s), query_id: query.id)
+#  end
 end
 
 def strip(string)
