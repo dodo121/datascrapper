@@ -8,7 +8,7 @@ class GoogleSearch
     search_form.q = query_term
     page = agent.submit(search_form)
 
-    query = Query.where("name = ?",  query_term.downcase).first_or_create(name: query_term.downcase, user_id: user_id)
+    query = Query.where("name = ?",  query_term.downcase).first_or_create(name: query_term.downcase, user_id: user_id, refresh_time: refresh_time)
 
     page.search('.g').to_enum.with_index(1).each do |p, index| # Offset for position number
       a_html_tag = p.at('a').to_s

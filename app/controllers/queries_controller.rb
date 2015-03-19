@@ -36,6 +36,6 @@ class QueriesController < ApplicationController
 
   private
     def query_params
-      params.require(:query).permit(:name)
+      params.require(:query).permit(:name, :refresh_time)
     end
 end
