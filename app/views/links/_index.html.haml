@@ -6,10 +6,12 @@
     %th Last update
     %th Visit
     %th SEO Position
+    %th SEO Change
 
   - collection.each do |link|
     %tr
       %td= link.name
       %td= link.updated_at.strftime("%H:%M %Y-%m-%d")
       %td= link_to "Visit &#8599;".html_safe, link.url, class: 'btn btn-default btn-sm', target: "_blank"
-      %td
+      %td= link.positions.last.number
+      %td= link.seo_change

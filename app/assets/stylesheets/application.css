@@ -17,13 +17,15 @@ body {
   background-color:#3E3E3D;
 }
 .container {
-  background-color: #FFF;
+  background-color: #ededed;
 }
 #content {
   margin: 50px 0;
   min-height:500px;
 }
-
+.form-control {
+  width: 240px;
+}
 
 /*flash*/
 .alert-error {
