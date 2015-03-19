@@ -15,6 +15,6 @@ class Link < ActiveRecord::Base
         self.seo_change = 'none'
       end
     end
-    self.save
+    self.save!
   end
 end
