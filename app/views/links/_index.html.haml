@@ -13,5 +13,5 @@
       %td= link.name
       %td= link.updated_at.strftime("%H:%M %Y-%m-%d")
       %td= link_to "Visit &#8599;".html_safe, link.url, class: 'btn btn-default btn-sm', target: "_blank"
-      %td= link.positions.last.number
+      %td= "##{link.positions.last.number}"
       %td= link.seo_change

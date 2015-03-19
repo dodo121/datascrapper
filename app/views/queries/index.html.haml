@@ -16,6 +16,12 @@
           %td= link_to 'Destroy', query, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn btn-danger btn-sm'
   - else
     %br
-    = link_to 'Add new Query', new_query_path
+    = link_to 'Add new Query &#10137;'.html_safe, new_query_path, class: 'btn btn-default'
 - else
-  Welcome!
+  %h1 Welcome!
+  Features in this app:
+  %ul
+    %li Collecting google serach results based on query provided by user
+    %li Checking specific link SEO position
+    %li Checking if link goes up or down on serach results list
+    %li Configurable interval-check time
