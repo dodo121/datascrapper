@@ -10,7 +10,7 @@ class GoogleSearch
 
     query = Query.where("name = ?",  query_term.downcase).first_or_create(name: query_term.downcase, user_id: user_id)
 
-    page.search('.g').to_enum.with_index(1).each do |p, index|
+    page.search('.g').to_enum.with_index(1).each do |p, index| # Offset for position number
       a_html_tag = p.at('a').to_s
       next if a_html_tag.include? 'images'
       clean_name = strip(a_html_tag)
@@ -20,7 +20,7 @@ class GoogleSearch
       position.link.check_seo_change
       position.save!
     end
-    #GoogleSearch.perform_in(refresh_time.to_i.minutes, query_term, user_id, refresh_time)
+    GoogleSearch.perform_in(refresh_time.to_i.minutes, query_term, user_id, refresh_time)
   end
 
   def strip(string)

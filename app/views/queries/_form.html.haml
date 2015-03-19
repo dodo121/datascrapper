@@ -2,7 +2,7 @@
   = f.error_notification
 
   .form-inputs
-    = f.input :name, required: :true
+    = f.input :name, required: :true, pattern: '\S+'
 
   .form-inputs
     = f.input :refresh_time, as: :integer, label: 'Refresh interval time (in minutes)', input_html: { value: '15' }
